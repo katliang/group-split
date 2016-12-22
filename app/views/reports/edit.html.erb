@@ -1,29 +1,5 @@
-<h1>Editing report</h1>
+<h1>Edit report</h1>
  
-<%= form_for :report, url: report_path(@report), method: :patch do |f| %>
- 
-  <% if @report.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@report.errors.count, "error") %> prohibited
-        this report from being saved:
-      </h2>
-      <ul>
-        <% @report.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'form' %>
  
 <%= link_to 'Back', reports_path %>
