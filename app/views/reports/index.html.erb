@@ -1,0 +1,16 @@
+<h1>Listing reports</h1>
+
+<%= link_to 'New report', new_report_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+ 
+  <% @reports.each do |report| %>
+    <tr>
+      <td><%= report.name %></td>
+      <td><%= link_to 'Show', report_path(report) %></td>
+    </tr>
+  <% end %>
+</table>
