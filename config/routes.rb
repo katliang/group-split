@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :reports
+  get 'people/index'
+
+  get 'people/edit'
+
+  get 'people/new'
+
+  get 'people/show'
+
+  resources :reports do
+    get '/people/new', :to => 'reports#people_new'
+    post '/people', :to => 'reports#create_and_relate_person'
+  end
 
   root 'welcome#index'
 

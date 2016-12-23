@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: reports
+# Table name: people
 #
 #  id         :integer          not null, primary key
-#  report_uid :string
+#  person_uid :string
 #  name       :string
+#  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class ReportTest < ActiveSupport::TestCase
+class PersonTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

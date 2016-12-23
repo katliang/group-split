@@ -1,10 +1,11 @@
 # == Schema Information
 #
-# Table name: reports
+# Table name: people
 #
 #  id         :integer          not null, primary key
-#  report_uid :string
+#  person_uid :string
 #  name       :string
+#  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -12,9 +13,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  report_uid: MyString
+  person_uid: MyString
   name: MyString
+  email: MyString
 
 two:
-  report_uid: MyString
+  person_uid: MyString
   name: MyString
+  email: MyString
