@@ -3,7 +3,7 @@
 # Table name: reports
 #
 #  id         :integer          not null, primary key
-#  report_uid :string
+#  uuid       :string
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,11 +15,11 @@ class Report < ApplicationRecord
   after_initialize :init
 
   def init
-    self.report_uid ||= SecureRandom.uuid
+    self.uuid ||= SecureRandom.uuid
   end
 
   def to_param
-    report_uid
+    uuid
   end
 
   validates :name, presence: true,

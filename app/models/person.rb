@@ -20,8 +20,6 @@ class Person < ApplicationRecord
     self.person_uid ||= SecureRandom.uuid
   end
 
-  validates :name, presence: true,
-                   length: { minimum: 1 }
   validates :email, presence: true,
                    length: { minimum: 1 },
                    uniqueness: true

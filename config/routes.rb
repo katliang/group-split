@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # get 'people/show'
 
-  resources :reports, param: :report_uid do
+  resources :reports, param: :uuid do
     get '/people/new', :to => 'reports#people_new'
     post '/people', :to => 'reports#create_and_relate_person'
   end
