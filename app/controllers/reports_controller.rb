@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @report = Report.find(params[:id])
+    @report = Report.find_by_report_uid(params[:report_uid])
   end
 
   def new
@@ -12,7 +12,7 @@ class ReportsController < ApplicationController
   end
 
   def edit
-    @report = Report.find(params[:id])
+    @report = Report.find_by_report_uid(params[:report_uid])
   end
 
   def create
@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
   end
 
   def update
-    @report = Report.find(params[:id])
+    @report = Report.find_by_report_uid(params[:report_uid])
 
     if @report.update(report_params)
       redirect_to @report
@@ -36,22 +36,22 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    @report = Report.find(params[:id])
+    @report = Report.find_by_report_uid(params[:report_uid])
     @report.destroy
 
     redirect_to reports_path
   end
 
   def people_new
-    @report = Report.find(params[:report_id])
+    @report = Report.find_by_report_uid(params[:report_report_uid])
   end
 
   def create_and_relate_person
     @person = Person.new(person_params)
-    @report = Report.find(params[:report_id])
+    @report = Report.find_by_report_uid(params[:report_report_uid])
 
     if @person.save
-      ReportPerson.create({person: @person, report: @report})
+      ReportPerson.create(person: @person.id, report: @report.id)
       redirect_to @report
     else
       render 'people_new'

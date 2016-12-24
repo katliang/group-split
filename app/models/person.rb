@@ -14,6 +14,12 @@ class Person < ApplicationRecord
   has_many :report_people
   has_many :reports, through: :report_people
 
+  after_initialize :init
+
+  def init
+    self.person_uid ||= SecureRandom.uuid
+  end
+
   validates :name, presence: true,
                    length: { minimum: 1 }
   validates :email, presence: true,

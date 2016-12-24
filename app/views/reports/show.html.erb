@@ -5,11 +5,13 @@
 
 <p>
   <strong>People:</strong>
-    <ul>
-      <% @report.people.each do |person| %>
-        <li><%= person.name %></li>
-      <% end %>
-    </ul>
+    <% if @report.people %>
+      <ul>
+        <% @report.people.each do |person| %>
+          <li><%= person.name %></li>
+        <% end %>
+      </ul>
+    <% end %>
 </p>
 
 <%= link_to 'Edit', edit_report_path(@report) %> |

@@ -18,6 +18,10 @@ class Report < ApplicationRecord
     self.report_uid ||= SecureRandom.uuid
   end
 
+  def to_param
+    report_uid
+  end
+
   validates :name, presence: true,
                    length: { minimum: 1 }
 end

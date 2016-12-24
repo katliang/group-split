@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'people/index'
+  # get 'people/index'
 
-  get 'people/edit'
+  # get 'people/edit'
 
-  get 'people/new'
+  # get 'people/new'
 
-  get 'people/show'
+  # get 'people/show'
 
-  resources :reports do
+  resources :reports, param: :report_uid do
     get '/people/new', :to => 'reports#people_new'
     post '/people', :to => 'reports#create_and_relate_person'
   end
