@@ -3,7 +3,7 @@
 # Table name: people
 #
 #  id         :integer          not null, primary key
-#  person_uid :string
+#  uuid       :string
 #  name       :string
 #  email      :string
 #  created_at :datetime         not null

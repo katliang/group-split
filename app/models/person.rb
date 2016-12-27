@@ -3,7 +3,7 @@
 # Table name: people
 #
 #  id         :integer          not null, primary key
-#  person_uid :string
+#  uuid       :string
 #  name       :string
 #  email      :string
 #  created_at :datetime         not null
@@ -17,7 +17,11 @@ class Person < ApplicationRecord
   after_initialize :init
 
   def init
-    self.person_uid ||= SecureRandom.uuid
+    self.uuid ||= SecureRandom.uuid
+  end
+
+  def to_param
+    uuid
   end
 
   validates :email, presence: true,
