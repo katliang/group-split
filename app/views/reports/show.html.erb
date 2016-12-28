@@ -7,8 +7,8 @@
   <strong>People:</strong>
     <% if @report.people %>
       <ul>
-        <% @report.people.each do |person| %>
-          <li><%= person.email %></li>
+        <% @report.report_people.each do |report_person| %>
+          <li><%= report_person.person.email %></li>
         <% end %>
       </ul>
     <% end %>

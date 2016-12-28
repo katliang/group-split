@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
 
-  # get 'people/index'
-
-  # get 'people/edit'
-
-  # get 'people/new'
-
-  # get 'people/show'
-
   resources :reports, param: :uuid do
     get '/people/new', :to => 'reports#people_new'
     post '/people', :to => 'reports#create_and_relate_person'
+    resources :report_people
   end
 
   root 'welcome#index'
