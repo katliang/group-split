@@ -12,6 +12,7 @@
 
 class Person < ApplicationRecord
   has_many :report_people
+  has_many :expenses
   has_many :reports, through: :report_people
 
   after_initialize :init

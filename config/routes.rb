@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get '/people/new', :to => 'reports#people_new'
     post '/people', :to => 'reports#create_and_relate_person'
     resources :report_people
+    resources :expenses
   end
 
   root 'welcome#index'
