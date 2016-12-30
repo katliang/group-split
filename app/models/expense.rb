@@ -14,6 +14,11 @@
 #
 
 class Expense < ApplicationRecord
-    belongs_to :report
-    belongs_to :person
+  belongs_to :report
+  belongs_to :person
+  after_initialize :init
+
+  def init
+    self.is_paid ||= false
+  end
 end

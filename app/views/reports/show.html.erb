@@ -14,6 +14,26 @@
     <% end %>
 </p>
 
+<p>
+<strong>Expense:</strong>
+  <table>
+    <tr>
+      <th>Vendor</th>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Who Paid</th>
+    </tr>
+    <% @report.expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.vendor %></td>
+        <td><%= expense.date %></td>
+        <td>$<%= expense.amount %></td>
+        <td><%= expense.person.email %></td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
 <h2>Add an expense:</h2>
 <%= form_for([@report, @report.expenses.build]) do |f| %>
   <p>
@@ -27,6 +47,11 @@
   <p>
     <%= f.label :amount %><br>
     <%= f.number_field :amount, :class => 'text_field', :step => 0.01 %>
+  </p>
+
+  <p>
+    <%= f.label :person_id %><br>
+    <%= collection_select(:person, :id, @report.people, :id, :email, prompt: true) %>
   </p>
   <p>
     <%= f.submit %>
