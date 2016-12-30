@@ -29,7 +29,7 @@ class ReportsController < ApplicationController
     @report = Report.find_by_uuid(params[:uuid])
 
     if @report.update(report_params)
-      redirect_to @report
+      redirect_to report_path
     else
       render 'edit'
     end
