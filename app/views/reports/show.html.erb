@@ -9,7 +9,7 @@
       <ul>
         <% @report.report_people.each do |report_person| %>
           <li><%= report_person.person.email %>
-              <%= link_to 'Remove Person', report_report_person_path(@report, report_person),
+              <%= link_to 'Remove', report_report_person_path(@report, report_person),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
           </li>
@@ -33,6 +33,9 @@
         <td><%= expense.date %></td>
         <td>$<%= expense.amount %></td>
         <td><%= expense.person.email %></td>
+        <td><%= link_to 'Remove', report_expense_path(@report, expense),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </table>

@@ -10,7 +10,12 @@ class ExpensesController < ApplicationController
   def edit
   end
 
-  def index
+  def destroy
+    @report = Report.find_by_uuid(params[:report_uuid])
+    @expense = @report.expenses.find(params[:id])
+
+    @expense.destroy
+    redirect_to report_path(@report)
   end
 
   def new
