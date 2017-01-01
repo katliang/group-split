@@ -41,6 +41,8 @@
   </table>
 </p>
 
+<p>Expense total: $<%= @report.sum %></p>
+
 <h2>Add an expense:</h2>
 <%= form_for([@report, @report.expenses.build]) do |f| %>
   <p>

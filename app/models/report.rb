@@ -25,4 +25,8 @@ class Report < ApplicationRecord
 
   validates :name, presence: true,
                    length: { minimum: 1 }
+
+  def sum
+    self.expenses.sum(:amount)
+  end
 end
