@@ -19,6 +19,7 @@ class ExpensesController < ApplicationController
   end
 
   def new
+    @report = Report.find_by_uuid(params[:report_uuid])
   end
 
   def show

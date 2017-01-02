@@ -1,2 +1,25 @@
-<h1>Expenses#new</h1>
-<p>Find me in app/views/expenses/new.html.erb</p>
+<h2>Add an expense:</h2>
+<%= form_for([@report, @report.expenses.build]) do |f| %>
+  <p>
+    <%= f.label :vendor %><br>
+    <%= f.text_field :vendor %>
+  </p>
+  <p>
+    <%= f.label :date %><br>
+    <%= f.date_field :date %>
+  </p>
+  <p>
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount, :class => 'text_field', :step => 0.01 %>
+  </p>
+
+  <p>
+    <%= f.label :person_id %><br>
+    <%= collection_select(:person, :id, @report.people, :id, :email, prompt: true) %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', report_path(@report) %>
