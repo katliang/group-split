@@ -41,6 +41,7 @@
   </table>
 </p>
 
-<p>Expense total: $<%= @report.sum %></p>
+<p>Expense total: $<%= @report.sum_expenses %></p>
+<p>Individual obligation: $<%= @report.individual_obligation %></p>
 
 <%= link_to 'Back', reports_path %>
