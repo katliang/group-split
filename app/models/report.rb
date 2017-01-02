@@ -7,6 +7,7 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  reconciled :boolean
 #
 
 class Report < ApplicationRecord
@@ -17,6 +18,7 @@ class Report < ApplicationRecord
 
   def init
     self.uuid ||= SecureRandom.uuid
+    self.reconciled ||= false
   end
 
   def to_param

@@ -56,7 +56,18 @@ class ReportsController < ApplicationController
     else
       self.render 'people_new'
     end
+  end
 
+  def reconcile
+    @report = Report.find_by_uuid(params[:report_uuid])
+    @report.reconciled = true
+    @report.save
+
+    self.render 'results'
+  end
+
+  def results
+    @report = Report.find_by_uuid(params[:report_uuid])
   end
 
   private

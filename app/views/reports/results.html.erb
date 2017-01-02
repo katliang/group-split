@@ -1,17 +1,14 @@
 <p>
   <strong>Name:</strong>
-  <%= @report.name %> <%= link_to 'Edit Name', edit_report_path(@report) %>
+  <%= @report.name %>
 </p>
 
 <p>
-  <strong>People:</strong> <%= link_to 'Add New Person', report_people_new_path(@report) %>
+  <strong>People:</strong>
     <% if @report.people %>
       <ul>
         <% @report.report_people.each do |report_person| %>
           <li><%= report_person.person.email %>
-              <%= link_to 'Remove', report_report_person_path(@report, report_person),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
           </li>
         <% end %>
       </ul>
@@ -19,7 +16,7 @@
 </p>
 
 <p>
-<strong>Expenses:</strong> <%= link_to 'Add New Expense', new_report_expense_path(@report) %>
+<strong>Expenses:</strong>
   <table>
     <tr>
       <th>Vendor</th>
@@ -33,18 +30,12 @@
         <td><%= expense.date %></td>
         <td>$<%= expense.amount %></td>
         <td><%= expense.person.email %></td>
-        <td><%= link_to 'Remove', report_expense_path(@report, expense),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </table>
 </p>
 
 <p>Expense total: $<%= @report.sum_expenses %></p>
-
-<p><%= form_for @report, :url => report_reconcile_path(@report) do |f| %>
-  <%= f.submit 'Reconcile expenses' %>
-<% end %></p>
+<p>Individual obligation: $<%= @report.individual_obligation %></p>
 
 <%= link_to 'Back', reports_path %>
