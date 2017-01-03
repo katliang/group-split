@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: payments
+#
+#  id          :integer          not null, primary key
+#  person_id   :integer
+#  report_id   :integer
+#  amount_owed :decimal(, )      not null
+#  has_paid    :boolean          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 1
+  report_id: 1
+  amount_owed: 9.99
+  has_paid: false
+
+two:
+  person_id: 1
+  report_id: 1
+  amount_owed: 9.99
+  has_paid: false
