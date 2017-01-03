@@ -38,4 +38,20 @@
 <p>Expense total: $<%= @report.sum_expenses %></p>
 <p>Individual obligation: $<%= @report.individual_obligation %></p>
 
+<p>
+<strong>Reconciliation:</strong>
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Amount Owed</th>
+    </tr>
+    <% @report.people.each do |person| %>
+      <tr>
+        <td><%= person.email %></td>
+        <td>$<%= person.amount_owed(@report) %></td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
 <%= link_to 'Back', reports_path %>

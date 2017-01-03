@@ -58,10 +58,14 @@ class ReportsController < ApplicationController
     end
   end
 
-  def reconcile
+  def reconcile_and_create_owed
     @report = Report.find_by_uuid(params[:report_uuid])
     @report.reconciled = true
     @report.save
+
+    @report.people.each do |person|
+      Payment.create(person_id: person.id, report_id: @report.id, amount_owed: person.amount_owed(@report))
+    end
 
     self.render 'results'
   end

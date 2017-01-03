@@ -14,6 +14,7 @@ class Report < ApplicationRecord
   has_many :report_people
   has_many :expenses
   has_many :people, through: :report_people
+  has_many :payments
   after_initialize :init
 
   def init

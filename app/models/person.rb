@@ -13,7 +13,7 @@ class Person < ApplicationRecord
   has_many :report_people
   has_many :expenses
   has_many :reports, through: :report_people
-
+  has_many :payments
   after_initialize :init
 
   def init
@@ -27,4 +27,12 @@ class Person < ApplicationRecord
   validates :email, presence: true,
                    length: { minimum: 1 },
                    uniqueness: true
+
+  def amount_paid
+    self.expenses.sum(:amount)
+  end
+
+  def amount_owed(report)
+    report.individual_obligation - self.amount_paid
+  end
 end
