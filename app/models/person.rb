@@ -28,11 +28,4 @@ class Person < ApplicationRecord
                    length: { minimum: 1 },
                    uniqueness: true
 
-  def amount_paid
-    self.expenses.sum(:amount)
-  end
-
-  def amount_owed(report)
-    report.individual_obligation - self.amount_paid
-  end
 end

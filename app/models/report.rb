@@ -40,4 +40,20 @@ class Report < ApplicationRecord
   def individual_obligation
     self.sum_expenses / self.num_people
   end
+
+  def get_totals_people_paid
+    totals_paid = {}
+    self.people.each do |person|
+        totals_paid[person.email] = person.expenses.sum(:amount)
+    end
+    totals_paid
+  end
+
+  def determine_owed_amounts
+    amounts_owed = {}
+    self.get_totals_people_paid.each do |email, amount|
+      amounts_owed[email] = self.individual_obligation - amount
+    end
+    amounts_owed
+  end
 end

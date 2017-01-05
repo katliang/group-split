@@ -45,10 +45,10 @@
       <th>Email</th>
       <th>Amount Owed</th>
     </tr>
-    <% @report.people.each do |person| %>
+    <% @report.determine_owed_amounts.each do |email, amount| %>
       <tr>
-        <td><%= person.email %></td>
-        <td>$<%= person.amount_owed(@report) %></td>
+        <td><%= email %></td>
+        <td>$<%= amount %></td>
       </tr>
     <% end %>
   </table>
