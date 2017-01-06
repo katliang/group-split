@@ -85,6 +85,9 @@ class Report < ApplicationRecord
       self.get_people_who_need_to_pay.each do |p_email, p_amount|
         if n_amount.abs >= p_amount
           pays.push([p_email, p_amount, n_email])
+          @p_person = self.people.find_by email: p_email
+          @n_person = self.people.find_by email: n_email
+          Payment.create(person_id: @p_person.id , report_id: self.id, amount_owed: p_amount, owed_to_person_id: @n_person.id)
         end
       end
     end
