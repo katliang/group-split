@@ -56,4 +56,38 @@ class Report < ApplicationRecord
     end
     amounts_owed
   end
+
+  def get_people_to_reimburse
+    people_to_reimburse = []
+    self.determine_owed_amounts.each do |email, amount|
+      # Negative amount denotes person needs to be reimbursed
+      if amount < 0
+        people_to_reimburse.push([email, amount])
+      end
+    end
+    people_to_reimburse.sort {|a,b| a[1] <=> b[1]}
+  end
+
+  def get_people_who_need_to_pay
+    people_who_need_to_pay = []
+    self.determine_owed_amounts.each do |email, amount|
+      # Positive amount denotes person needs to pay
+      if amount > 0
+        people_who_need_to_pay.push([email, amount])
+      end
+    end
+    people_who_need_to_pay.sort {|a,b| b[1] <=> a[1]}
+  end
+
+  def determine_pay_to
+    pays = []
+    self.get_people_to_reimburse.each do |n_email, n_amount|
+      self.get_people_who_need_to_pay.each do |p_email, p_amount|
+        if n_amount.abs >= p_amount
+          pays.push([p_email, p_amount, n_email])
+        end
+      end
+    end
+    pays
+  end
 end

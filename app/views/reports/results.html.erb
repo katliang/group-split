@@ -43,7 +43,7 @@
   <table>
     <tr>
       <th>Email</th>
-      <th>Amount Owed</th>
+      <th>Amount</th>
     </tr>
     <% @report.determine_owed_amounts.each do |email, amount| %>
       <tr>
@@ -51,6 +51,24 @@
         <td>$<%= amount %></td>
       </tr>
     <% end %>
+  </table>
+</p>
+
+<p>
+<strong>People Who Need to Pay:</strong>
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Amount Owed</th>
+      <th>Owed To</th>
+    </tr>
+    <% @report.determine_pay_to.each do |p_email, p_amount, n_email| %>
+        <tr>
+          <td><%= p_email %></td>
+          <td>$<%= p_amount %></td>
+          <td><%= n_email %></td>
+        </tr>
+      <% end %>
   </table>
 </p>
 
