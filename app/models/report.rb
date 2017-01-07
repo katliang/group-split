@@ -44,7 +44,7 @@ class Report < ApplicationRecord
   def get_totals_people_paid
     totals_paid = {}
     self.people.each do |person|
-        totals_paid[person.email] = person.expenses.sum(:amount)
+        totals_paid[person.email] = person.expenses.where(report_id: self.id).sum(:amount)
     end
     totals_paid
   end
@@ -79,16 +79,41 @@ class Report < ApplicationRecord
     people_who_need_to_pay.sort {|a,b| b[1] <=> a[1]}
   end
 
-  def create_payments
-    self.get_people_to_reimburse.each do |n_email, n_amount|
-      self.get_people_who_need_to_pay.each do |p_email, p_amount|
-        if n_amount.abs >= p_amount
-          @p_person = self.people.find_by email: p_email
-          @n_person = self.people.find_by email: n_email
-          Payment.create(person_id: @p_person.id , report_id: self.id, amount_owed: p_amount, owed_to_person_id: @n_person.id)
-        end
+  def match_and_create_payments
+    people_who_need_to_pay = self.get_people_who_need_to_pay
+    people_to_reimburse = self.get_people_to_reimburse
+
+    while people_who_need_to_pay.length > 0
+      # check if largest reimbursement amount exceeds or equals largest owed amount
+      if people_to_reimburse[0][1].abs >= people_who_need_to_pay[0][1]
+        # amount to be paid is the largest owed amount
+        payment_amount = people_who_need_to_pay[0][1]
+      else
+      # largest reimbursement amount is less than largest owed amount
+      # max payment can only be up to reimbursement amount
+        payment_amount = people_to_reimburse[0][1].abs
+      end
+
+      # generate a new payment
+      self.create_payment(people_who_need_to_pay[0][0], people_to_reimburse[0][0], payment_amount)
+      # update for payment created
+      people_to_reimburse[0][1] += payment_amount
+      people_who_need_to_pay[0][1] -= payment_amount
+
+      # remove item from either list if amount to be reconciled gets to 0
+      if people_to_reimburse[0][1] == 0
+        people_to_reimburse.delete_at(0)
+      end
+
+      if people_who_need_to_pay[0][1] == 0
+        people_who_need_to_pay.delete_at(0)
       end
     end
-    pays
+  end
+
+  def create_payment(pay_from_email, pay_to_email, amount)
+    @p_person = self.people.find_by email: pay_from_email
+    @n_person = self.people.find_by email: pay_to_email
+    Payment.create(person_id: @p_person.id , report_id: self.id, amount_owed: amount, owed_to_person_id: @n_person.id)
   end
 end

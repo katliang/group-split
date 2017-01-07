@@ -63,7 +63,7 @@ class ReportsController < ApplicationController
     @report.reconciled = true
     @report.save
 
-    @report.create_payments
+    @report.match_and_create_payments
 
     self.render 'results'
   end
