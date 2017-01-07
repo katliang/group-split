@@ -15,6 +15,7 @@
 class Payment < ApplicationRecord
   belongs_to :report
   belongs_to :person
+  belongs_to :owed_to_person, class_name: "Person"
   after_initialize :init
 
   def init

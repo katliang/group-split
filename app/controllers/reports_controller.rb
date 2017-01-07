@@ -63,9 +63,7 @@ class ReportsController < ApplicationController
     @report.reconciled = true
     @report.save
 
-    @report.people.each do |person|
-      Payment.create(person_id: person.id, report_id: @report.id, amount_owed: person.amount_owed(@report))
-    end
+    @report.create_payments
 
     self.render 'results'
   end
