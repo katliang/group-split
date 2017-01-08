@@ -22,9 +22,6 @@ class ExpensesController < ApplicationController
     @report = Report.find_by_uuid(params[:report_uuid])
   end
 
-  def show
-  end
-
   private
     def expense_params
       params.require(:expense).permit(:vendor, :date, :amount)
