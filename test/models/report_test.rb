@@ -13,7 +13,8 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "new report should get uuid" do
+    report = Report.new
+    assert_not_nil(report.uuid, "A report uuid should be assigned to a new report.")
+  end
 end
