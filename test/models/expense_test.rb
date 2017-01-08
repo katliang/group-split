@@ -16,7 +16,8 @@
 require 'test_helper'
 
 class ExpenseTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "new expense should be unpaid" do
+    expense = Expense.new
+    assert_not_equal(expense.is_paid, "An expense should be marked unpaid initially.")
+  end
 end

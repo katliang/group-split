@@ -15,7 +15,8 @@
 require 'test_helper'
 
 class PaymentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "new payment should be unpaid" do
+    payment = Payment.new
+    assert_not_equal(payment.has_paid, "A payment should be marked unpaid initially.")
+  end
 end

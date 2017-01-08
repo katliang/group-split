@@ -12,7 +12,8 @@
 require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "new person should get uuid" do
+    person = Person.new
+    assert_not_nil(person.uuid, "A person uuid should be assigned to a new person.")
+  end
 end
