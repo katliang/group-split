@@ -13,8 +13,8 @@
 
 one:
   uuid: MyString
-  email: MyString
+  email: MyString@email.com
 
 two:
-  uuid: MyString
-  email: MyString
+  uuid: MyString2
+  email: MyString2@email.com
