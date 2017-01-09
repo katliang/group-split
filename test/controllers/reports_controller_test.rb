@@ -22,4 +22,13 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     get edit_report_url(report)
     assert_response :success
   end
+
+  test "should destroy report" do
+    report = reports(:one)
+    assert_difference('Report.count', -1) do
+      delete report_url(report)
+    end
+
+    assert_redirected_to reports_path
+  end
 end

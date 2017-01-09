@@ -11,10 +11,10 @@
 #
 
 class Report < ApplicationRecord
-  has_many :report_people
-  has_many :expenses
+  has_many :report_people, :dependent => :destroy
+  has_many :expenses, :dependent => :destroy
   has_many :people, through: :report_people
-  has_many :payments
+  has_many :payments, :dependent => :destroy
   after_initialize :init
 
   def init
