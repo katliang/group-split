@@ -7,7 +7,7 @@
 #  report_id  :integer
 #  vendor     :string           not null
 #  date       :date             not null
-#  amount     :decimal(, )      not null
+#  amount     :integer          not null
 #  is_paid    :boolean          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -28,15 +28,15 @@
       <tr>
         <td><%= expense.vendor %></td>
         <td><%= expense.date %></td>
-        <td>$<%= expense.amount %></td>
+        <td><%= number_to_currency(expense.amount/100.00) %></td>
         <td><%= expense.person.email %></td>
       </tr>
     <% end %>
   </table>
 </p>
 
-<p>Expense total: $<%= @report.sum_expenses %></p>
-<p>Individual obligation: $<%= @report.individual_obligation %></p>
+<p>Expense total: <%= number_to_currency(@report.sum_expenses) %></p>
+<p>Individual obligation: <%= number_to_currency(@report.individual_obligation) %></p>
 
 <p>
 <strong>Reconciliation:</strong>
@@ -48,7 +48,7 @@
     <% @report.determine_owed_amounts.each do |email, amount| %>
       <tr>
         <td><%= email %></td>
-        <td>$<%= amount %></td>
+        <td><%= number_to_currency(amount) %></td>
       </tr>
     <% end %>
   </table>
@@ -65,7 +65,7 @@
     <% @report.payments.each do |payment| %>
         <tr>
           <td><%= payment.person.email %></td>
-          <td>$<%= payment.amount_owed %></td>
+          <td><%= number_to_currency(payment.amount_owed/100.00) %></td>
           <td><%= payment.owed_to_person.email %></td>
         </tr>
       <% end %>

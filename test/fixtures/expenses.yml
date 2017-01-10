@@ -7,7 +7,7 @@
 #  report_id  :integer
 #  vendor     :string           not null
 #  date       :date             not null
-#  amount     :decimal(, )      not null
+#  amount     :integer          not null
 #  is_paid    :boolean          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -18,7 +18,7 @@
 one:
   vendor: MyString
   date: 2016-12-28
-  amount: 9.99
+  amount: 999
   is_paid: false
   report: one
   person: one
@@ -26,7 +26,7 @@ one:
 two:
   vendor: MyString
   date: 2016-12-28
-  amount: 9.99
+  amount: 999
   is_paid: false
   report: one
   person: one

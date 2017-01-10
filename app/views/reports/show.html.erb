@@ -31,7 +31,7 @@
       <tr>
         <td><%= expense.vendor %></td>
         <td><%= expense.date %></td>
-        <td>$<%= expense.amount %></td>
+        <td><%= number_to_currency(expense.amount/100.00) %></td>
         <td><%= expense.person.email %></td>
         <td><%= link_to 'Remove', report_expense_path(@report, expense),
               method: :delete,
@@ -41,7 +41,7 @@
   </table>
 </p>
 
-<p>Expense total: $<%= @report.sum_expenses %></p>
+<p>Expense total: <%= number_to_currency(@report.sum_expenses) %></p>
 
 <p><%= form_for @report, :url => report_reconcile_path(@report) do |f| %>
   <%= f.submit 'Reconcile expenses' %>

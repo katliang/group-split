@@ -32,4 +32,9 @@ class ReportTest < ActiveSupport::TestCase
     report = reports(:one)
     assert_equal report.individual_obligation, 9.99, "Individual obligation calculation is incorrect."
   end
+
+  test "totals people paid calculation" do
+    report = reports(:one)
+    assert_equal report.get_totals_people_paid, {'MyString@email.com' => 19.98, 'MyString2@email.com' => 0.00}, "Get totals people paid calculation is incorrect."
+  end
 end

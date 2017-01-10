@@ -30,7 +30,7 @@ class Report < ApplicationRecord
                    length: { minimum: 1 }
 
   def sum_expenses
-    self.expenses.sum(:amount)
+    self.expenses.sum(:amount)/100.00
   end
 
   def num_people
@@ -44,7 +44,7 @@ class Report < ApplicationRecord
   def get_totals_people_paid
     totals_paid = {}
     self.people.each do |person|
-        totals_paid[person.email] = person.expenses.where(report_id: self.id).sum(:amount)
+        totals_paid[person.email] = person.expenses.where(report_id: self.id).sum(:amount)/100.00
     end
     totals_paid
   end
@@ -114,6 +114,6 @@ class Report < ApplicationRecord
   def create_payment(pay_from_email, pay_to_email, amount)
     @p_person = self.people.find_by email: pay_from_email
     @n_person = self.people.find_by email: pay_to_email
-    Payment.create(person_id: @p_person.id , report_id: self.id, amount_owed: amount, owed_to_person_id: @n_person.id)
+    Payment.create(person_id: @p_person.id , report_id: self.id, amount_owed: amount*100, owed_to_person_id: @n_person.id)
   end
 end
