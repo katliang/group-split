@@ -1,4 +1,7 @@
 class ExpensesController < ApplicationController
+
+  before_filter :authorize
+
   def create
     @report = Report.find_by_uuid(params[:report_uuid])
     @expense = @report.expenses.new(expense_params)

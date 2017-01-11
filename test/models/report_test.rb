@@ -45,11 +45,11 @@ class ReportTest < ActiveSupport::TestCase
 
   test "get people to reimburse" do
     report = reports(:one)
-    assert_equal [['MyString@email.com',-9.99]], report.get_people_to_reimburse, "Get people to reimburse calculation is incorrect."
+    assert_equal [['MyString@email.com', -9.99]], report.get_people_to_reimburse, "Get people to reimburse calculation is incorrect."
   end
 
   test "get people who need to pay" do
     report = reports(:one)
-    assert_equal [['MyString2@email.com',9.99]], report.get_people_who_need_to_pay, "Get people who need to pay calculation is incorrect."
+    assert_equal [['MyString2@email.com', 9.99]], report.get_people_who_need_to_pay, "Get people who need to pay calculation is incorrect."
   end
 end

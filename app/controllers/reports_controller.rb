@@ -1,4 +1,7 @@
 class ReportsController < ApplicationController
+
+  before_filter :authorize
+
   def index
     @reports = Report.all
   end
