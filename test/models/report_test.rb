@@ -20,21 +20,36 @@ class ReportTest < ActiveSupport::TestCase
 
   test "sum of report expenses" do
     report = reports(:one)
-    assert_equal report.sum_expenses, 19.98, "Sum of report expenses is incorrect."
+    assert_equal 19.98, report.sum_expenses, "Sum of report expenses is incorrect."
   end
 
   test "count of report people" do
     report = reports(:one)
-    assert_equal report.num_people, 2, "Count of report people is incorrect."
+    assert_equal 2, report.num_people, "Count of report people is incorrect."
   end
 
   test "individual obligation calculation" do
     report = reports(:one)
-    assert_equal report.individual_obligation, 9.99, "Individual obligation calculation is incorrect."
+    assert_equal 9.99, report.individual_obligation, "Individual obligation calculation is incorrect."
   end
 
-  test "totals people paid calculation" do
+  test "get totals people paid" do
     report = reports(:one)
     assert_equal report.get_totals_people_paid, {'MyString@email.com' => 19.98, 'MyString2@email.com' => 0.00}, "Get totals people paid calculation is incorrect."
+  end
+
+  test "determine owed amounts" do
+    report = reports(:one)
+    assert_equal report.determine_owed_amounts, {'MyString@email.com' => -9.99, 'MyString2@email.com' => 9.99}, "Determine owed amounts calculation is incorrect."
+  end
+
+  test "get people to reimburse" do
+    report = reports(:one)
+    assert_equal [['MyString@email.com',-9.99]], report.get_people_to_reimburse, "Get people to reimburse calculation is incorrect."
+  end
+
+  test "get people who need to pay" do
+    report = reports(:one)
+    assert_equal [['MyString2@email.com',9.99]], report.get_people_who_need_to_pay, "Get people who need to pay calculation is incorrect."
   end
 end
