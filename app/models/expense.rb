@@ -17,7 +17,7 @@ class Expense < ApplicationRecord
   belongs_to :report
   belongs_to :person
   after_initialize :init
-  before_create :convert
+  before_save :convert
 
   def init
     self.is_paid ||= false
