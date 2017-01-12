@@ -3,9 +3,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
-      session[:user_id] = user.id
+    @user = User.new(user_params)
+    @person = Person.find_by(email: user_params['email'])
+
+    if @person
+        @user.person_id = @person.id
+    else
+        @new_person = Person.create(email: user_params['email'])
+        @user.person_id = @new_person.id
+    end
+
+    if @user.save
+      session[:user_id] = @user.id
       redirect_to '/reports'
     else
       redirect_to '/signup'
