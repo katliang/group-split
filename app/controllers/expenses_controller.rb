@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
 
-  before_filter :authorize
+  before_action :authorize
 
   def create
     @report = Report.find_by_uuid(params[:report_uuid])
