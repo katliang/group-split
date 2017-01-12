@@ -4,14 +4,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @person = Person.find_by(email: user_params['email'])
-
-    if @person
-        @user.person_id = @person.id
-    else
-        @new_person = Person.create(email: user_params['email'])
-        @user.person_id = @new_person.id
-    end
+    @person = Person.find_or_create_by(email: user_params['email'])
+    @user.person_id = @person.id
 
     if @user.save
       session[:user_id] = @user.id
