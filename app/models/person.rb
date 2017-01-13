@@ -14,6 +14,7 @@ class Person < ApplicationRecord
   has_many :expenses
   has_many :reports, through: :report_people
   has_many :payments
+  has_one :user
   after_initialize :init
 
   def init

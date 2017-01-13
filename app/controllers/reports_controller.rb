@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   before_action :authorize
 
   def index
-    @reports = Report.all
+    @reports = current_user.person.reports
   end
 
   def show
