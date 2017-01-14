@@ -1,53 +1,94 @@
-<p>
-  <strong>Name:</strong>
-  <%= @report.name %> <%= link_to 'Edit Name', edit_report_path(@report) %>
-</p>
+<div class="container">
 
-<p>
-  <strong>People:</strong> <%= link_to 'Add New Person', report_people_new_path(@report) %>
-    <% if @report.people %>
-      <ul>
-        <% @report.report_people.each do |report_person| %>
-          <li><%= report_person.person.email %>
-              <%= link_to 'Remove', report_report_person_path(@report, report_person),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-          </li>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <strong>Report Name:</strong>
+        <%= @report.name %>
+        <%= link_to 'Edit Name', edit_report_path(@report),
+                                 class:'btn btn-default btn-xs' %>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <strong>People in Group:</strong>
+      <%= link_to 'Add New Person', report_people_new_path(@report),
+                                    class:'btn btn-default btn-xs' %>
+        <% if @report.people %>
+          <table class="table table-striped">
+            <tr>
+              <th>Email</th>
+              <th>Remove?</th>
+            </tr>
+
+            <% @report.report_people.each do |report_person| %>
+              <tr>
+                <td><%= report_person.person.email %></td>
+                <td><%= link_to 'Remove', report_report_person_path(@report,report_person),
+                                          class:'btn btn-danger btn-xs',
+                                          method: :delete,
+                                          data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </table>
         <% end %>
-      </ul>
-    <% end %>
-</p>
+    </div>
+  </div><br>
 
-<p>
-<strong>Expenses:</strong> <%= link_to 'Add New Expense', new_report_expense_path(@report) %>
-  <table>
-    <tr>
-      <th>Vendor</th>
-      <th>Date</th>
-      <th>Amount</th>
-      <th>Who Paid</th>
-    </tr>
-    <% @report.expenses.each do |expense| %>
-      <tr>
-        <td><%= expense.vendor %></td>
-        <td><%= expense.date %></td>
-        <td><%= number_to_currency(expense.amount/100.00) %></td>
-        <td><%= expense.person.email %></td>
-        <td><%= link_to 'Remove', report_expense_path(@report, expense),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
-</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <strong>Group Expenses:</strong>
+      <%= link_to 'Add New Expense', new_report_expense_path(@report),
+                                     class:'btn btn-default btn-xs' %>
+        <table class="table table-striped">
+          <tr>
+            <th>Vendor</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Who Paid</th>
+            <th>Remove?</th>
+          </tr>
+          <% @report.expenses.each do |expense| %>
+            <tr>
+              <td><%= expense.vendor %></td>
+              <td><%= expense.date %></td>
+              <td><%= number_to_currency(expense.amount/100.00) %></td>
+              <td><%= expense.person.email %></td>
+              <td><%= link_to 'Remove', report_expense_path(@report, expense),
+                                        class:'btn btn-danger btn-xs',
+                                        method: :delete,
+                                        data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </table>
+    </div>
+  </div><br>
 
-<p>Expense total: <%= number_to_currency(@report.sum_expenses) %></p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <p>Total: <%= number_to_currency(@report.sum_expenses) %></p>
+    </div>
+  </div><br>
 
-<p><%= form_for @report, :url => report_reconcile_path(@report) do |f| %>
-  <%= f.submit 'Reconcile expenses' %>
-<% end %></p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <%= form_for @report, :url => report_reconcile_path(@report) do |f| %>
+        <%= f.submit 'Reconcile Expenses', class:'btn btn-success btn-sm' %>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Back', reports_path %><br>
-<%= link_to 'Delete Report', report_path(@report),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to 'Back to Reports', reports_path,
+                                     class:'btn btn-primary btn-sm' %>
+    </div>
+
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <%= link_to 'Delete Report', report_path(@report),
+                                   class:'btn btn-danger btn-sm',
+                                   method: :delete,
+                                   data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+</div>
