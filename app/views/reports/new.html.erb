@@ -1,5 +1,16 @@
-<h1>New report</h1>
- 
-<%= render 'form' %>
+<div class="container-fluid">
 
-<%= link_to 'Back', reports_path %>
+  <div class="row">
+    <h3>Create New Report</h3>
+  </div>
+
+  <div class="row">
+    <%= render 'form' %>
+  </div>
+  <br>
+
+  <div class="row">
+    <%= link_to 'Back to Reports', reports_path, class: 'btn btn-primary btn-sm' %>
+  </div>
+
+</div>
