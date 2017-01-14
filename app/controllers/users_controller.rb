@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  def new
-  end
 
   def create
     @user = User.new(user_params)
@@ -11,7 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/reports'
     else
-      redirect_to '/signup'
+      redirect_to '/'
     end
   end
 

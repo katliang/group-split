@@ -11,8 +11,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  # These routes will be for signup.
-  get '/signup' => 'users#new'
+  # This route will be for signup.
   post '/users' => 'users#create'
 
   # These routes are for displaying a login form, login and logout.
