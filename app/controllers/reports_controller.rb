@@ -22,6 +22,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
 
     if @report.save
+      ReportPerson.create(person_id: current_user.person_id, report_id: @report.id)
       redirect_to @report
     else
       render 'new'
