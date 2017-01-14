@@ -47,4 +47,7 @@
   <%= f.submit 'Reconcile expenses' %>
 <% end %></p>
 
-<%= link_to 'Back', reports_path %>
+<%= link_to 'Back', reports_path %><br>
+<%= link_to 'Delete Report', report_path(@report),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
