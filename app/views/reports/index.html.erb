@@ -1,38 +1,47 @@
-<h1>Listing reports</h1>
+<div class="container-fluid">
 
-<%= link_to 'New report', new_report_path %>
+  <div class="row">
+    <h3>My Reports</h3>
+  </div>
 
-<table>
-  <tr>
-    <th>In Progress Reports:</th>
-    <th colspan="2"></th>
-  </tr>
- 
-  <% @reports.each do |report| %>
-    <% if report.reconciled == false %>
-      <tr>
-        <td><%= report.name %></td>
-        <td><%= link_to 'Show', report_path(report) %></td>
-        <td><%= link_to 'Delete', report_path(report),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  <% end %>
-</table>
+  <div class="row">
+    <%= link_to 'Create Report', new_report_path, class: 'btn btn-primary btn-sm' %>
+  </div>
+  <br>
 
-<p></p>
+  <div class="row">
+    <div class="col-xs-6">
+      <table class="table table-striped">
+        <tr>
+          <th>In Progress Reports:</th>
+        </tr>
+        <% @reports.each do |report| %>
+          <% if report.reconciled == false %>
+            <tr>
+              <td><%= report.name %></td>
+              <td><%= link_to 'Show', report_path(report) %></td>
+              <td><%= link_to 'Delete', report_path(report),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
 
-<table>
-  <tr>
-    <th>Generated Reports:</th>
-  </tr>
+    <div class="col-xs-6">
+      <table class="table table-striped">
+        <tr>
+          <th>Generated Reports:</th>
+        </tr>
+        <% @reports.each do |report| %>
+          <% if report.reconciled == true %>
+            <tr>
+              <td><%= link_to report.name, report_results_path(report) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
 
-  <% @reports.each do |report| %>
-    <% if report.reconciled == true %>
-      <tr>
-        <td><%= link_to report.name, report_results_path(report) %></td>
-      </tr>
-    <% end %>
-  <% end %>
-</table>
+</div>
