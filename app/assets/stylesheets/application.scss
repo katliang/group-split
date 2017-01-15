@@ -28,3 +28,10 @@ th {
 .navbar-default .navbar-text {
     color: $nav-color;
 }
+
+#description {
+    font: 125% $font-stack;
+    vertical-align: middle;
+    padding-top: 50px;
+    font-style: italic;
+}

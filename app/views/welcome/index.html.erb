@@ -7,26 +7,39 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+    <div class="span6">
+      <div class="col-xs-12 col-sm-6 text-center" id="description">
+          <p>Easily split group expenses.</p>
+          <p>GroupSplit does the math and tells you who needs to pay who.</p>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-1">
 
-      <%= form_for :user, url: '/users' do |f| %>
-        <label for="input-email"></label>
-          <%= f.text_field :email, class: 'form-control', placeholder: 'Your email address'%>
+        <%= form_for :user, url: '/users' do |f| %>
+          <label for="input-email"></label>
+            <%= f.text_field :email, class: 'form-control', placeholder: 'Your email address'%>
 
-        <label for="input-password"></label>
-          <%= f.password_field :password, class: 'form-control', placeholder: 'Create a password' %>
+          <label for="input-password"></label>
+            <%= f.password_field :password, class: 'form-control', placeholder: 'Create a password' %>
 
-        <label for="input-password2"></label>
-          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password' %>
-        <br>
-          <%= f.submit "Sign Up", class: 'btn btn-primary btn-lg btn-block' %>
-      <% end %>
+          <label for="input-password2"></label>
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password' %>
+          <br>
+            <%= f.submit "Sign Up", class: 'btn btn-primary btn-lg btn-block' %>
+        <% end %>
+      </div>
     </div>
   </div><br>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
-      Already a user? <%= link_to 'Log In Here', '/login', class: 'btn btn-default btn-sm' %>
+    <div class="span6">
+      <div class="col-xs-12 col-sm-6"></div>
+    </div>
+    <div class="span6">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-1 text-center">
+        Already a user? <%= link_to 'Log In Here', '/login', class: 'btn btn-default btn-sm' %>
+      </div>
     </div>
   </div>
 
