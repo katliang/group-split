@@ -1,3 +1,8 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 # PostgreSQL database
 
 development:
@@ -19,6 +24,8 @@ test:
   username: <%= ENV["PSQL_USER"] %>
   password: <%= ENV["PSQL_PASSWORD"] %>
 
-# production:
-#   <<: *default
-#   database: db/production.sqlite3
+production:
+  <<: *default
+  database: expense_app_production
+  username: expense_app
+  password: <%= ENV['EXPENSEAPP_DATABASE_PASSWORD'] %>
