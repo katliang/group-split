@@ -26,9 +26,6 @@ tmp/
 *secret*
 secrets.yml
 
-# Check in to normalize the environment:
-Gemfile.lock
-
 # Ignore coverage files.
 coverage
 
