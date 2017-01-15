@@ -1,113 +1,97 @@
-<div class="container">
+<div class="container-fluid">
 
-  <div class="row">
+  <div class="row-fluid">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <strong>Report Name:</strong>
       <%= @report.name %>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <strong>People in Group:</strong>
-        <% if @report.people %>
-          <table class="table table-striped">
-            <tr>
-              <th>Email</th>
-            </tr>
-            <% @report.report_people.each do |report_person| %>
-            <tr>
-              <td><%= report_person.person.email %></td>
-            </tr>
-            <% end %>
-          </table>
-        <% end %>
+  <div class="row-fluid">
+    <div class="span10">
+        <div class="col-xs-10 col-sm-8 col-sm-offset-1">
+          <strong>Group Expenses:</strong>
+            <table class="table table-striped">
+              <tr>
+                <th>Vendor</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Who Paid</th>
+              </tr>
+              <% @report.expenses.each do |expense| %>
+              <tr>
+                <td><%= expense.vendor %></td>
+                <td><%= expense.date %></td>
+                <td><%= number_to_currency(expense.amount/100.00) %></td>
+                <td><%= expense.person.email %></td>
+              </tr>
+              <% end %>
+            </table>
+        </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-      <strong>Group Expenses:</strong>
-        <table class="table table-striped">
-          <tr>
-            <th>Vendor</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Who Paid</th>
-          </tr>
-          <% @report.expenses.each do |expense| %>
-            <tr>
-              <td><%= expense.vendor %></td>
-              <td><%= expense.date %></td>
-              <td><%= number_to_currency(expense.amount/100.00) %></td>
-              <td><%= expense.person.email %></td>
-            </tr>
-          <% end %>
-        </table>
+    <div class="span2">
+      <div class="col-xs-2">
+        Expense total: <%= number_to_currency(@report.sum_expenses) %>
       </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      Expense total: <%= number_to_currency(@report.sum_expenses) %>
+      <div class="col-xs-2">
+        Individual obligation: <%= number_to_currency(@report.individual_obligation) %>
+      </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      Individual obligation: <%= number_to_currency(@report.individual_obligation) %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <strong>Reconciliation:</strong>
-        <table class="table table-striped">
-          <tr>
-            <th>Email</th>
-            <th>Amount</th>
-          </tr>
-          <% @report.determine_owed_amounts.each do |email, amount| %>
-            <tr>
-              <td><%= email %></td>
-              <td><%= number_to_currency(amount) %></td>
-            </tr>
-          <% end %>
-        </table>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-      <strong>People Who Need to Pay:</strong>
-        <table class="table table-striped">
-          <tr>
-            <th>Email</th>
-            <th>Amount Owed</th>
-            <th>Owed To</th>
-          </tr>
-          <% @report.payments.each do |payment| %>
+  <div class="row-fluid">
+    <div class="span10">
+        <div class="col-xs-10 col-sm-8 col-sm-offset-1">
+          <strong>People Who Need to Pay:</strong>
+            <table class="table table-striped">
+              <tr>
+                <th>Email</th>
+                <th>Amount Owed</th>
+                <th>Owed To</th>
+              </tr>
+              <% @report.payments.each do |payment| %>
               <tr>
                 <td><%= payment.person.email %></td>
                 <td><%= number_to_currency(payment.amount_owed/100.00) %></td>
                 <td><%= payment.owed_to_person.email %></td>
               </tr>
+              <% end %>
+            </table>
+        </div>
+    </div>
+    <div class="span2">
+      <div class="col-xs-2">
+        <strong>Reconciliation:</strong>
+          <table class="table table-striped">
+            <tr>
+              <th>Email</th>
+              <th>Amount</th>
+            </tr>
+            <% @report.determine_owed_amounts.each do |email, amount| %>
+            <tr>
+              <td><%= email %></td>
+              <td><%= number_to_currency(amount) %></td>
+            </tr>
             <% end %>
-        </table>
+          </table>
+      </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <%= link_to 'Back', reports_path,
-                          class:'btn btn-primary btn-sm' %><br>
+  <div class="row-fluid">
+    <div class="span10">
+      <div class="col-xs-10">
+        <%= link_to 'Back', reports_path,
+                            class:'btn btn-primary btn-sm' %>
+      </div>
     </div>
-
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <%= link_to 'Delete Report', report_path(@report),
-                                   class:'btn btn-danger btn-sm',
-                                   method: :delete,
-                                   data: { confirm: 'Are you sure?' } %>
+    <div class="span2">
+      <div class="col-xs-2">
+        <%= link_to 'Delete Report', report_path(@report),
+                                      class:'btn btn-danger btn-sm',
+                                      method: :delete,
+                                      data: { confirm: 'Are you sure?' } %>
+      </div>
     </div>
   </div>
 </div>
