@@ -1,16 +1,20 @@
-<div class="container-fluid">
+<div class="container">
 
   <div class="row">
-    <h3>My Reports</h3>
+    <div class="col-xs-12 text-center">
+      <h3>My Reports</h3>
+    </div>
   </div>
 
   <div class="row">
-    <%= link_to 'Create Report', new_report_path, class: 'btn btn-primary btn-sm' %>
+    <div class="col-xs-12 text-center">
+      <%= link_to 'Create New Report', new_report_path, class: 'btn btn-primary btn-sm' %>
+    </div>
   </div>
   <br>
 
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-2">
       <table class="table table-striped">
         <tr>
           <th>In Progress Reports:</th>
@@ -25,7 +29,7 @@
       </table>
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-4">
       <table class="table table-striped">
         <tr>
           <th>Generated Reports:</th>
