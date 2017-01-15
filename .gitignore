@@ -23,8 +23,7 @@ tmp/
 .byebug_history
 
 # Ignore secrets.
-*secret*
-secrets.yml
+*secrets.sh
 
 # Ignore coverage files.
 coverage
