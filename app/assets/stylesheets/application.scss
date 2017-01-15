@@ -1,2 +1,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$font-stack: Helvetica, sans-serif;
+$primary-color: #003366;
+$nav-color: white;
+
+body {
+  font: 150% $font-stack;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+}
+
+.navbar-default {
+    background-color: $primary-color;
+}
+
+th {
+    background-color: #e7eff6;
+}
+
+.navbar-default .navbar-brand {
+    color: $nav-color;
+}
+
+.navbar-default .navbar-text {
+    color: $nav-color;
+}

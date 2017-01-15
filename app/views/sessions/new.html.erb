@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-xs-12 text-center">
-      <h3>Log In to GroupSplit</h3>
+      <h1>Welcome to GroupSplit!</h1>
     </div>
   </div>
 
@@ -10,10 +10,10 @@
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
 
       <%= form_tag '/login', method: :post, :class => "form-horizontal" do %>
-        <label for="input-email">Email</label>
+        <label for="input-email"></label>
           <%= text_field_tag :email, params[:email], class: 'form-control', placeholder: 'Your email address'%>
 
-        <label for="input-password">Password</label>
+        <label for="input-password"></label>
           <%= password_field_tag :password, params[:password], class: 'form-control', placeholder: 'Enter your password' %>
         <br>
           <%= submit_tag "Log In", class: 'btn btn-primary btn-lg btn-block' %>
