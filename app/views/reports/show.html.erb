@@ -24,8 +24,8 @@
             <% @report.report_people.each do |report_person| %>
               <tr>
                 <td><%= report_person.person.email %></td>
-                <td><%= link_to 'Remove', report_report_person_path(@report,report_person),
-                                          class:'btn btn-danger btn-xs',
+                <td><%= link_to '', report_report_person_path(@report,report_person),
+                                          class:'glyphicon glyphicon-trash',
                                           method: :delete,
                                           data: { confirm: 'Are you sure?' } %></td>
               </tr>
@@ -54,8 +54,8 @@
               <td><%= expense.date %></td>
               <td><%= number_to_currency(expense.amount/100.00) %></td>
               <td><%= expense.person.email %></td>
-              <td><%= link_to 'Remove', report_expense_path(@report, expense),
-                                        class:'btn btn-danger btn-xs',
+              <td><%= link_to '', report_expense_path(@report, expense),
+                                        class:'glyphicon glyphicon-trash',
                                         method: :delete,
                                         data: { confirm: 'Are you sure?' } %></td>
             </tr>
