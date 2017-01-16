@@ -4,7 +4,9 @@ class ExpensesController < ApplicationController
 
   def create
     @report = Report.find_by_uuid(params[:report_uuid])
-    @expense = @report.expenses.new(expense_params)
+    ep = expense_params
+    ep[:amount] = expense_params[:amount].to_f * 100
+    @expense = @report.expenses.new(ep)
     @expense.attributes = {'person_id': person_params[:id]}
     @expense.save
     redirect_to report_path(@report)

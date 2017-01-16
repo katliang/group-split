@@ -17,13 +17,8 @@ class Expense < ApplicationRecord
   belongs_to :report
   belongs_to :person
   after_initialize :init
-  before_save :convert
 
   def init
     self.is_paid ||= false
-  end
-
-  def convert
-    self.amount *= 100
   end
 end
