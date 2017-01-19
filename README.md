@@ -10,7 +10,7 @@ The deployed project can be found here: https://tranquil-castle-84286.herokuapp.
 
 ## <a name="technologies"></a>Technologies
 
-Backend: Ruby, Ruby on Rails, PostgreSQL, Active Record<br/>
+Backend: Ruby, Ruby on Rails, PostgreSQL<br/>
 Frontend: HTML5, CSS, Bootstrap<br/>
 
 ## <a name="features"></a>Features
