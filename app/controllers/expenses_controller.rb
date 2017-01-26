@@ -8,8 +8,12 @@ class ExpensesController < ApplicationController
     ep[:amount] = expense_params[:amount].to_f * 100
     @expense = @report.expenses.new(ep)
     @expense.attributes = {'person_id': person_params[:id]}
-    @expense.save
-    redirect_to report_path(@report)
+
+    if @expense.save
+      redirect_to report_path(@report)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -25,6 +29,7 @@ class ExpensesController < ApplicationController
 
   def new
     @report = Report.find_by_uuid(params[:report_uuid])
+    @expense = @report.expenses.build
   end
 
   private
