@@ -24,19 +24,21 @@
           </div>
         <% end %>
 
-        <label for="expense-vendor">Vendor</label>
+        <p><span class="required">*</span> Indicates a required field</p>
+
+        <label for="expense-vendor">Vendor <span class="required">*</span></label>
         <%= f.text_field :vendor, class: 'form-control', placeholder: 'Vendor' %>
 
-        <label for="expense-date">Date</label>
+        <label for="expense-date">Date <span class="required">*</span></label>
         <%= f.date_field :date, class: 'form-control' %>
 
-        <label for="expense-amount">Amount Paid</label>
+        <label for="expense-amount">Amount Paid <span class="required">*</span></label>
         <%= f.number_field :amount, :class => 'text_field',
                                     :step => 0.01, :min => 0,
                                     class: 'form-control',
                                     placeholder: '0.00' %>
 
-        <label for="expense-person">Person Who Paid</label>
+        <label for="expense-person">Person Who Paid <span class="required">*</span></label>
 
         <div class="dropdown">
           <%= collection_select(:person, :id, @report.people, :id, :email, prompt: true, class: 'dropdown-menu') %>

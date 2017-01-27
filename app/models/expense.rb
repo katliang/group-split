@@ -21,4 +21,13 @@ class Expense < ApplicationRecord
   def init
     self.is_paid ||= false
   end
+
+  validates :vendor, presence: true,
+                     length: { minimum: 1 }
+
+  validates :date, presence: true
+
+  validates :amount, presence: true,
+                     numericality: { greater_than: 0}
+
 end
