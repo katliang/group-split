@@ -4,9 +4,16 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #003366;
 $nav-color: white;
+$primary-font: 'Baloo Paaji', cursive;
+$body-font: 'Varela Round', sans-serif;
+
+.name-font {
+  font-family: $primary-font;
+}
 
 body {
   font: 150% $font-stack;
+  font-family: $body-font;
 }
 
 .btn-primary {
@@ -34,6 +41,7 @@ th {
     vertical-align: middle;
     padding-top: 50px;
     font-style: italic;
+    font-family: $body-font;
 }
 
 span.required {

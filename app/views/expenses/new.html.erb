@@ -26,22 +26,29 @@
 
         <p><span class="required">*</span> Indicates a required field</p>
 
-        <label for="expense-vendor">Vendor <span class="required">*</span></label>
-        <%= f.text_field :vendor, class: 'form-control', placeholder: 'Vendor' %>
+        <div class="form-group">
+          <label for="expense-vendor">Vendor <span class="required">*</span></label>
+          <%= f.text_field :vendor, class: 'form-control', placeholder: 'Vendor' %>
+        </div>
 
-        <label for="expense-date">Date <span class="required">*</span></label>
-        <%= f.date_field :date, class: 'form-control' %>
+        <div class="form-group">
+          <label for="expense-date">Date <span class="required">*</span></label>
+          <%= f.date_field :date, class: 'form-control' %>
+        </div>
 
-        <label for="expense-amount">Amount Paid <span class="required">*</span></label>
-        <%= f.number_field :amount, :class => 'text_field',
-                                    :step => 0.01, :min => 0,
-                                    class: 'form-control',
-                                    placeholder: '0.00' %>
+        <div class="form-group">
+          <label for="expense-amount">Amount Paid <span class="required">*</span></label>
+          <%= f.number_field :amount, :class => 'text_field',
+                                      :step => 0.01, :min => 0,
+                                      class: 'form-control',
+                                      placeholder: '0.00' %>
+        </div>
 
-        <label for="expense-person">Person Who Paid <span class="required">*</span></label>
-
-        <div class="dropdown">
-          <%= collection_select(:person, :id, @report.people, :id, :email, prompt: true, class: 'dropdown-menu') %>
+        <div class="form-group">
+          <label for="expense-person">Person Who Paid <span class="required">*</span></label>
+          <div class="dropdown">
+            <%= collection_select(:person, :id, @report.people, :id, :email, prompt: true, class: 'dropdown-menu') %>
+          </div>
         </div>
         <%= f.submit "Submit", class: 'btn btn-success btn-sm pull-right' %>
       <% end %>
