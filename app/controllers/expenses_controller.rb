@@ -16,9 +16,6 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def destroy
     @report = Report.find_by_uuid(params[:report_uuid])
     @expense = @report.expenses.find(params[:id])

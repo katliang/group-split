@@ -15,6 +15,7 @@
       <%= link_to 'Add New Person', report_people_new_path(@report),
                                     class:'btn btn-default btn-xs' %>
         <% if @report.people %>
+        <div class="table-responsive">
           <table class="table table-striped">
             <tr>
               <th>Email</th>
@@ -31,6 +32,7 @@
               </tr>
             <% end %>
           </table>
+        </div>
         <% end %>
     </div>
   </div>
@@ -40,6 +42,7 @@
       <strong>Group Expenses:</strong>
       <%= link_to 'Add New Expense', new_report_expense_path(@report),
                                      class:'btn btn-default btn-xs' %>
+       <div class="table-responsive">
         <table class="table table-striped">
           <tr>
             <th>Vendor</th>
@@ -61,6 +64,7 @@
             </tr>
           <% end %>
         </table>
+      </div>
     </div>
   </div><br>
 
