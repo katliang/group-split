@@ -6,6 +6,14 @@
     </div>
   </div>
 
+  <% if @errors.length > 0 %>
+    <% @errors.each do |msg| %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+    <% end %>
+  <% end %>
+
   <div class="row">
     <div class="span6">
       <div class="col-xs-12 col-sm-6 text-center" id="description">

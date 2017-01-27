@@ -1,14 +1,20 @@
 class SessionsController < ApplicationController
   def new
+    @errors = []
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    @errors = []
+    @errors.append('Email is missing.') if params[:email].blank?
+    @errors.append('Password is missing.') if params[:password].blank?
+
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
       redirect_to '/reports'
     else
-      redirect_to '/login'
+      @errors.append('Invalid email and/or password.')
+      render 'sessions/new'
     end
   end
 
