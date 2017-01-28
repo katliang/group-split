@@ -217,7 +217,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400
 // Typography =================================================================
 
 .lead {
-  color: $gray;
+  color: $gray-base;
 }
 
 cite {
@@ -250,8 +250,14 @@ blockquote {
 
 // Tables =====================================================================
 
+th {
+  text-align: center;
+}
+
 table {
   font-size: $font-size-small;
+  text-align: center;
+
 }
 
 // Forms ======================================================================
@@ -354,6 +360,11 @@ input[type="checkbox"] {
 .list-group {
   font-size: $font-size-small;
   font-weight: 300;
+}
+
+.no-bullet-list {
+  list-style-type: none;
+  padding: 0px;
 }
 
 // Indicators =================================================================
