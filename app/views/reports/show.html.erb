@@ -16,7 +16,7 @@
                                     class:'btn btn-default btn-xs' %>
         <% if @report.people %>
         <div class="table-responsive">
-          <table class="table table-striped">
+          <table class="table table-bordered">
             <tr>
               <th>Email</th>
               <th>Remove?</th>
@@ -43,7 +43,7 @@
       <%= link_to 'Add New Expense', new_report_expense_path(@report),
                                      class:'btn btn-default btn-xs' %>
        <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-bordered">
           <tr>
             <th>Vendor</th>
             <th>Date</th>
@@ -72,25 +72,19 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-right">
       <p>Total: <%= number_to_currency(@report.sum_expenses) %></p>
     </div>
+    <div class="col-sm-3"></div>
   </div><br>
 
   <div class="row-fluid">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="col-xs-12 col-sm-3">
       <%= form_for @report, :url => report_reconcile_path(@report) do |f| %>
-        <%= f.submit 'Reconcile Expenses', class:'btn btn-success btn-sm pull-right' %>
+        <%= f.submit 'Reconcile Expenses', class:'btn btn-success btn-sm' %>
       <% end %>
     </div>
-  </div><br><br>
 
-  <div class="row-fluid">
-    <div class="col-xs-12 col-sm-3 col-sm-offset-3">
-      <%= link_to 'Back to Reports', reports_path,
-                                     class:'btn btn-primary btn-sm' %>
-    </div>
-
-    <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <%= link_to 'Delete Report', report_path(@report),
-                                   class:'btn btn-danger btn-sm pull-right',
+                                   class:'btn btn-danger btn-sm',
                                    method: :delete,
                                    data: { confirm: 'Are you sure?' } %>
     </div>

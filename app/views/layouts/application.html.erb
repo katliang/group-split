@@ -22,21 +22,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand brand-name" href="#">GroupSplit</a>
+          <% if current_user %>
+            <a class="navbar-brand brand-name" href="/reports">GroupSplit</a>
+          <% else %>
+            <a class="navbar-brand brand-name" href="#">GroupSplit</a>
+          <% end %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <% if current_user %>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/reports">My Reports <span class="sr-only">(current)</span></a></li>
+          </ul>
+        <% end %>
 
-          <% if current_user %>
-            <ul class="nav navbar-nav">
-              <li class="active"><p class="navbar-text">Signed in as <%= current_user.email %>
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span></p></li>
-            </ul>
-          <% end %>
-
-          <ul class="navbar-right">
+          <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
+              <li class="active"><p class="navbar-text">Signed in as <%= current_user.email %></p></li>
               <%= link_to "Log Out", '/logout', class: 'btn btn-default navbar-btn' %>
             <% end %>
           </ul>
