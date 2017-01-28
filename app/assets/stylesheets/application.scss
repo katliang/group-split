@@ -1,2 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
+
+body {
+    /* Background pattern from subtlepatterns.com */
+    background-image: image-url("bg.png")
+}
