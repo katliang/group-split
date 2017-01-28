@@ -242,6 +242,12 @@ blockquote {
   font-family: $title-font;
 }
 
+#description {
+  font-style: italic;
+  font-size: $font-size-large;
+  padding-top: 20px;
+}
+
 // Tables =====================================================================
 
 table {
