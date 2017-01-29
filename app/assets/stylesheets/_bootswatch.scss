@@ -238,29 +238,10 @@ blockquote {
   }
 }
 
-.brand-name {
-  font-family: $title-font;
-}
-
-#description {
-  font-style: italic;
-  font-size: $font-size-large;
-  padding-top: 20px;
-}
-
-.required {
-  color: $brand-danger;
-}
-
 // Tables =====================================================================
-
-th {
-  text-align: center;
-}
 
 table {
   font-size: $font-size-small;
-  text-align: center;
 
 }
 
@@ -364,11 +345,6 @@ input[type="checkbox"] {
 .list-group {
   font-size: $font-size-small;
   font-weight: 300;
-}
-
-.no-bullet-list {
-  list-style-type: none;
-  padding: 0px;
 }
 
 // Indicators =================================================================

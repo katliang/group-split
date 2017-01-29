@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
 
+$title-font:            'Sacramento', cursive;
+
 body {
     /* Background pattern from subtlepatterns.com */
     background-image: image-url("bg.png")
@@ -12,4 +14,37 @@ body {
 
 #calculated-totals {
     display: none;
+}
+
+#description {
+  font-style: italic;
+  font-size: $font-size-large;
+  padding-top: 75px;
+}
+
+@media (max-width: 978px) {
+  #description {
+  padding-top: 5px;
+  }
+}
+
+.brand-name {
+  font-family: $title-font;
+}
+
+.required {
+  color: $brand-danger;
+}
+
+th {
+  text-align: center;
+}
+
+.no-bullet-list {
+  list-style-type: none;
+  padding: 0px;
+}
+
+table {
+  text-align: center;
 }
