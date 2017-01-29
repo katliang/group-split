@@ -248,6 +248,10 @@ blockquote {
   padding-top: 20px;
 }
 
+.required {
+  color: $brand-danger;
+}
+
 // Tables =====================================================================
 
 th {
