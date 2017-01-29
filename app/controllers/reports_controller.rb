@@ -8,6 +8,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find_by_uuid(params[:uuid])
+    @errors = []
   end
 
   def new
@@ -64,12 +65,25 @@ class ReportsController < ApplicationController
 
   def reconcile_and_create_owed
     @report = Report.find_by_uuid(params[:report_uuid])
-    @report.reconciled = true
-    @report.save
+    @errors = []
 
-    @report.match_and_create_payments
+    if @report.expenses.count == 0
+      @errors.append('Report must have at least one expense before reconciling.')
+    end
 
-    self.render 'results'
+    if @report.report_people.count == 0
+      @errors.append('Report must have at least one person before reconciling.')
+    end
+
+    if @errors.length > 0
+      render 'show'
+    else
+      @report.reconciled = true
+      @report.save
+
+      @report.match_and_create_payments
+      self.render 'results'
+    end
   end
 
   def results

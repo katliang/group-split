@@ -20,12 +20,21 @@ class Expense < ApplicationRecord
 
   def init
     self.is_paid ||= false
+    self.date ||= Date.today
   end
 
   validates :vendor, presence: true,
                      length: { minimum: 1 }
 
   validates :date, presence: true
+
+  validate :date_not_in_future
+
+  def date_not_in_future
+    if self.date && self.date > Date.today
+      errors.add(:date, 'cannot be in the future.')
+    end
+  end
 
   validates :amount, presence: true,
                      numericality: { greater_than: 0}

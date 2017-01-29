@@ -1,5 +1,20 @@
 <div class="container">
 
+<% if @errors.length > 0 %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="alert alert-dismissible alert-info">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <ul>
+              <% @errors.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
 <!-- Row contains nested rows -->
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 well">
@@ -47,7 +62,7 @@
                 <% @report.report_people.each do |report_person| %>
                     <li><%= report_person.person.email %>
                     <%= link_to '', report_report_person_path(@report,report_person),
-                                    class:'glyphicon glyphicon-trash',
+                                    class:'glyphicon glyphicon-remove-circle',
                                     method: :delete,
                                     data: { confirm: 'Are you sure?' } %></li>
                 <% end %>
@@ -78,7 +93,7 @@
                   <td><%= number_to_currency(expense.amount/100.00) %></td>
                   <td><%= expense.person.email %></td>
                   <td><%= link_to '', report_expense_path(@report, expense),
-                                            class:'glyphicon glyphicon-trash',
+                                            class:'glyphicon glyphicon-remove-circle',
                                             method: :delete,
                                             data: { confirm: 'Are you sure?' } %></td>
                 </tr>

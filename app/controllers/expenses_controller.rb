@@ -12,6 +12,7 @@ class ExpensesController < ApplicationController
     if @expense.save
       redirect_to report_path(@report)
     else
+      @expense.amount /= 100.00
       render 'new'
     end
   end
