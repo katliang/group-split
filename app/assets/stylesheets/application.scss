@@ -5,3 +5,11 @@ body {
     /* Background pattern from subtlepatterns.com */
     background-image: image-url("bg.png")
 }
+
+#expense-table {
+    display: none;
+}
+
+#calculated-totals {
+    display: none;
+}
