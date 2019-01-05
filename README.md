@@ -19,7 +19,7 @@ Frontend: HTML5, CSS, Bootstrap, jQuery<br/>
 
 ![alt tag](http://g.recordit.co/lXb64k6ZpL.gif)
 
-This Rails application has a home page with a form for new users to sign up (above) and a log in page for returning users (not shown). Passwords are hashed with Bcrypt before storing in the PostgreSQL database.
+This Rails application has a home page with a form for new users to sign up (above) and a log in page for returning users (not shown). Passwords are hashed with salt via Bcrypt before storing in the PostgreSQL database.
 
 ![alt tag](http://g.recordit.co/f1ie7mMRnO.gif)
 
