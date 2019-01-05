@@ -6,7 +6,7 @@ The deployed project can be found here: https://tranquil-castle-84286.herokuapp.
 
 GroupSplit is responsive to mobile and desktop size screens.
 
-##Contents
+## Contents
 * [Technologies](#technologies)
 * [Features](#features)
 
