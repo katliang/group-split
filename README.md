@@ -1,10 +1,6 @@
 # GroupSplit
 
-GroupSplit allows users to easily split group expenses.
-
-The deployed project can be found here: https://tranquil-castle-84286.herokuapp.com/
-
-GroupSplit is responsive to mobile and desktop size screens.
+GroupSplit allows users to easily split group expenses. This app is responsive to mobile and desktop size screens.
 
 ## Contents
 * [Technologies](#technologies)
