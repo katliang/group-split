@@ -5,6 +5,7 @@ GroupSplit allows users to easily split group expenses. This app is responsive t
 ## Contents
 * [Technologies](#technologies)
 * [Features](#features)
+* [Installation](#install)
 
 ## <a name="technologies"></a>Technologies
 
@@ -43,3 +44,61 @@ The results page displays the reconciliation. Buttons are included to show more 
 
 Future feature:
 * Email integration so reconciled reports can be sent to people in the group.
+
+## <a name="install"></a>Installation
+
+To run GroupSplit:
+
+Install Ruby Version Manager
+
+Install Ruby Version 2.6.3:
+
+```
+rvm install "ruby-2.6.3"
+```
+
+Install PostGreSQL:
+
+```
+brew install postgres
+```
+
+Clone or fork this repo:
+
+```
+https://github.com/katliang/group-split.git
+```
+
+Install gems:
+
+```
+bundle install
+```
+
+Add secret key to your bash profile:
+
+```
+export DEV_SECRET_KEY_BASE=<YOUR SECRET KEY HERE>
+```
+
+Source your bash profile with this new key.
+
+Create your database:
+
+```
+rake db:create
+```
+
+Set up the tables in the database:
+
+```
+rake db:migrate
+```
+
+Run the app:
+
+```
+rails s
+```
+
+You can now navigate to 'localhost:3000/' to access GroupSplit.
